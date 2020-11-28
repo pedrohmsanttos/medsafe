@@ -1,0 +1,213 @@
+<?php
+
+namespace $NAMESPACE_CONTROLLER$;
+
+use $NAMESPACE_REQUEST$\Create$MODEL_NAME$Request;
+use $NAMESPACE_REQUEST$\Update$MODEL_NAME$Request;
+use $NAMESPACE_REPOSITORY$\$MODEL_NAME$Repository;
+use $NAMESPACE_APP$\Http\Controllers\AppBaseController;
+use Illuminate\Http\Request;
+use Flash;
+use Prettus\Repository\Criteria\RequestCriteria;
+use Response;
+use DB;
+
+class $MODEL_NAME$Controller extends AppBaseController
+{
+    /** @var  $MODEL_NAME$Repository */
+    private $$MODEL_NAME_CAMEL$Repository;
+
+    public function __construct($MODEL_NAME$Repository $$MODEL_NAME_CAMEL$Repo)
+    {
+        $this->$MODEL_NAME_CAMEL$Repository = $$MODEL_NAME_CAMEL$Repo;
+        // Set Permissions
+        $this->middleware('permission:$MODEL_NAME_CAMEL$_listar', ['only' => ['index']]); 
+        $this->middleware('permission:$MODEL_NAME_CAMEL$_adicionar', ['only' => ['create', 'store']]);
+        $this->middleware('permission:$MODEL_NAME_CAMEL$_editar', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:$MODEL_NAME_CAMEL$_deletar', ['only' => ['destroy']]);
+        $this->middleware('permission:$MODEL_NAME_CAMEL$_visualizar', ['only' => ['show']]);
+    }
+
+    /**
+     * Display a listing of the $MODEL_NAME$.
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function index(Request $request)
+    {
+        $filtros = $request->all(); 
+
+        /** Titulo da página */
+        $title = "$MODEL_NAME_HUMAN$";
+        /** Breadcrumb */
+        $breadcrumb = new \stdClass;
+        $breadcrumb->nome = "$MODEL_NAME_HUMAN$";
+        /** Filtros */
+        $this->$MODEL_NAME_CAMEL$Repository->pushCriteria(new RequestCriteria($request));
+        $filters = $this->$MODEL_NAME_CAMEL$Repository->filter($filtros);
+
+        if(isset($filtros['situacao'])){
+            if($filtros['situacao'] == 'all'){
+                $$MODEL_NAME_PLURAL_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->scopeQuery(function($query){
+                    return $query->withTrashed(); // com deletados
+                })->paginate();
+            }else if($filtros['situacao'] == 'inativo'){
+                $$MODEL_NAME_PLURAL_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->scopeQuery(function($query){
+                    return $query->onlyTrashed(); // só os deletados
+                })->paginate();
+            }else{
+                $$MODEL_NAME_PLURAL_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->paginate();
+            }
+        }else{
+            $$MODEL_NAME_PLURAL_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->paginate();
+        }
+
+        return view('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.index', compact('title','breadcrumb','$MODEL_NAME_PLURAL_CAMEL$', 'filters'));
+    }
+
+    /**
+     * Show the form for creating a new $MODEL_NAME$.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        /** Titulo da página */
+        $title = "$MODEL_NAME_HUMAN$";
+        /** Breadcrumb */
+        $breadcrumb = new \stdClass;
+        $breadcrumb->nome = "add$MODEL_NAME_HUMAN$";
+
+        return view('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.create', compact('title','breadcrumb'));
+    }
+
+    /**
+     * Store a newly created $MODEL_NAME$ in storage.
+     *
+     * @param Create$MODEL_NAME$Request $request
+     *
+     * @return Response
+     */
+    public function store(Create$MODEL_NAME$Request $request)
+    {
+        $input = $request->all();
+
+        $$MODEL_NAME_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->create($input);
+
+        Flash::success('$MODEL_NAME_HUMAN$ salvo com sucesso.');
+
+        return redirect(route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index'));
+    }
+
+    /**
+     * Display the specified $MODEL_NAME$.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+    public function show($id)
+    {
+        /** Titulo da página */
+        $title = "$MODEL_NAME_HUMAN$";
+        /** Breadcrumb */
+        $breadcrumb = new \stdClass;
+        $breadcrumb->nome = "show$MODEL_NAME_HUMAN$";
+        
+        $$MODEL_NAME_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->findWithoutFail($id);
+
+        if (empty($$MODEL_NAME_CAMEL$)) {
+            Flash::error('$MODEL_NAME_HUMAN$ não encontrado');
+
+            return redirect(route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index'));
+        }
+
+        return view('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.show', compact('title','breadcrumb','$MODEL_NAME_CAMEL$'));
+    }
+
+    /**
+     * Show the form for editing the specified $MODEL_NAME$.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+    public function edit($id)
+    {
+        $$MODEL_NAME_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->findWithoutFail($id);
+
+        if (empty($$MODEL_NAME_CAMEL$)) {
+            Flash::error('$MODEL_NAME_HUMAN$ não encontrado');
+
+            return redirect(route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index'));
+        }
+
+        // Titulo da página
+        $title = "$MODEL_NAME_HUMAN$";
+        // Breadcrumb 
+        $breadcrumb = new \stdClass;
+        $breadcrumb->nome = "edit$MODEL_NAME_HUMAN$";
+        $breadcrumb->id = $$MODEL_NAME_CAMEL$->id;
+        $breadcrumb->titulo = $$MODEL_NAME_CAMEL$->id;
+
+        return view('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.edit', compact('title','breadcrumb','$MODEL_NAME_CAMEL$'));
+    }
+
+    /**
+     * Update the specified $MODEL_NAME$ in storage.
+     *
+     * @param  int              $id
+     * @param Update$MODEL_NAME$Request $request
+     *
+     * @return Response
+     */
+    public function update($id, Update$MODEL_NAME$Request $request)
+    {
+        $$MODEL_NAME_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->findWithoutFail($id);
+
+        if (empty($$MODEL_NAME_CAMEL$)) {
+            Flash::error('$MODEL_NAME_HUMAN$ não encontrado');
+
+            return redirect(route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index'));
+        }
+
+        $$MODEL_NAME_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->update($request->all(), $id);
+
+        Flash::success('$MODEL_NAME_HUMAN$ atualizado com sucesso.');
+
+        return redirect(route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index'));
+    }
+
+    /**
+     * Remove the specified $MODEL_NAME$ from storage.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+    public function destroy($id, Request $request)
+    {
+        $input = $request->all();
+        $ids   = $input['ids'];
+
+        DB::beginTransaction();
+        try{
+            foreach ($ids as $id) {
+                $this->$MODEL_NAME_CAMEL$Repository->delete($id);
+            }
+
+            DB::commit();
+            Flash::success('$MODEL_NAME_HUMAN$(s) inativado(s) com sucesso.');
+            return response()->json([
+                'msg' => 'Sucesso',
+            ]);
+        } catch(\Exception $e) {
+            DB::rollBack();
+            Flash::error('Error ao inativar $MODEL_NAME_HUMAN$(s)!');
+            return response()->json([
+                'msg' => 'Error',
+            ]);
+        }
+    }
+}

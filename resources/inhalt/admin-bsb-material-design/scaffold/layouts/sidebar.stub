@@ -1,0 +1,215 @@
+<aside id="leftsidebar" class="sidebar">
+        <div class="user-info">
+            <div class="image">
+                <img src="{{asset('imgs/user.png')}}" width="48" height="48" alt="User">
+            </div>
+            <div class="info-container">
+                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{auth()->user()->name}}</div>
+                <div class="email">{{auth()->user()->email}}</div>
+                <div class="btn-group user-helper-dropdown">
+                    <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+                    <ul class="dropdown-menu pull-right">
+                        <li><a href="{{url('/meuperfil')}}"><i class="material-icons">person</i>Perfil</a></li>
+                        <li><a href="{{url('/sair')}}"><i class="material-icons">input</i>Sair</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="menu">
+            <ul class="list">
+                <li class="active">
+                    <a href="{{url('/home')}}">
+                        <i class="material-icons">home</i>
+                        <span>Página Inicial</span>
+                    </a>
+                </li>
+                <li class="treeview {!! (Request::is('cadastros')) ? 'active' : '' !!}">
+                    <a href="javascript:void(0);" class="menu-toggle">
+                                    <i class="material-icons">save</i>
+                                    <span>Cadastros</span>
+                    </a>
+                    <ul class="ml-menu">
+
+                        <li class="treeview {!! (Request::is('clientes')) ? 'active' : '' !!}">
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">people</i>
+                                <span>Clientes</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li><a href="{{url('clientes/create')}}">Adicionar</a></li>
+                                <li><a href="{{url('clientes')}}">Lista</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview {!! (Request::is('fornecedores')) ? 'active' : '' !!}">
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">business</i>
+                                <span>Fornecedores</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li><a href="{{url('fornecedores/create')}}">Adicionar</a></li>
+                                <li><a href="{{url('fornecedores')}}">Lista</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview {!! (Request::is('seguradoras')) ? 'active' : '' !!}">
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">business_center</i>
+                                <span>Seguradoras</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li><a href="{{url('seguradoras/create')}}">Adicionar</a></li>
+                                <li><a href="{{url('seguradoras')}}">Lista</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview {!! (Request::is('contasbancarias')) ? 'active' : '' !!}">
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">account_balance</i>
+                                <span>Contas bancárias</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li><a href="{{url('contasbancarias/create')}}">Adicionar</a></li>
+                                <li><a href="{{url('contasbancarias')}}">Lista</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview {!! (Request::is('categoriaProdutos')) ? 'active' : '' !!}">
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">bookmark_border</i>
+                                <span>Categoria de Produtos</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li><a href="{{url('categoriaProdutos/create')}}">Adicionar</a></li>
+                                <li><a href="{{url('categoriaProdutos')}}">Lista</a></li>
+                            </ul>
+                        </li>            
+                        <li class="treeview {!! (Request::is('tipoProdutos')) ? 'active' : '' !!}">
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">opacity</i>
+                                <span>Tipo de Produtos</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li><a href="{{url('tipoProdutos/create')}}">Adicionar</a></li>
+                                <li><a href="{{url('tipoProdutos')}}">Lista</a></li>
+                            </ul>
+                        </li>            
+                        <li class="treeview {!! (Request::is('produtos')) ? 'active' : '' !!}">
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">sim_card</i>
+                                <span>Produtos</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li><a href="{{url('produtos/create')}}">Adicionar</a></li>
+                                <li><a href="{{url('produtos')}}">Lista</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview {!! (Request::is('produtoTipoProdutos')) ? 'active' : '' !!}">
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">monetization_on</i>
+                                <span>Tabela de Preços</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li><a href="{{url('produtoTipoProdutos/create')}}">Adicionar</a></li>
+                                <li><a href="{{url('produtoTipoProdutos')}}">Lista</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview {!! (Request::is('planodecontas')) ? 'active' : '' !!}">
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">class</i>
+                                <span>Plano de Contas</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li><a href="{{url('planodecontas/create')}}">Adicionar</a></li>
+                                <li><a href="{{url('planodecontas')}}">Lista</a></li>
+                            </ul>
+                        </li>            
+                        <li class="treeview {!! (Request::is('novidades')) ? 'active' : '' !!}">
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">new_releases</i>
+                                <span>Novidades</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li><a href="{{url('novidades/create')}}">Adicionar</a></li>
+                                <li><a href="{{url('novidades')}}">Lista</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="treeview {!! (Request::is('formaDePagamentos')) ? 'active' : '' !!}">
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">payment</i>
+                                <span>Formas de Pagamento</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li><a href="{{url('formaDePagamentos/create')}}">Adicionar</a></li>
+                                <li><a href="{{url('formaDePagamentos')}}">Lista</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview {!! (Request::is('faturamentos')) ? 'active' : '' !!}">
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">attach_money</i>
+                                <span>Faixas de Faturamento</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li><a href="{{url('faturamentos/create')}}">Adicionar</a></li>
+                                <li><a href="{{url('faturamentos')}}">Lista</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="treeview {!! (Request::is('motivoPerdaNegocios')) ? 'active' : '' !!}">
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">money_off</i>
+                                <span>Motivos de Perda de Negócios</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li><a href="{{url('motivoPerdaNegocios/create')}}">Adicionar</a></li>
+                                <li><a href="{{url('motivoPerdaNegocios')}}">Lista</a></li>
+                            </ul>
+                        </li>  
+                        <li class="treeview {!! (Request::is('statusPedidos')) ? 'active' : '' !!}">
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">local_shipping</i>
+                                <span>Status de Pedidos</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li><a href="{{url('statusPedidos/create')}}">Adicionar</a></li>
+                                <li><a href="{{url('statusPedidos')}}">Lista</a></li>
+                            </ul>
+                        </li> 
+
+                        <li class="treeview {!! (Request::is('contratos')) ? 'active' : '' !!}">
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">insert_drive_file</i>
+                                <span>Contratos</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li><a href="{{url('contratos/create')}}">Adicionar</a></li>
+                                <li><a href="{{url('contratos')}}">Lista</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>    
+                </li> 
+                <li class="treeview {!! (Request::is('atendimento')) ? 'active' : '' !!}">
+                    <a href="javascript:void(0);" class="menu-toggle">
+                                    <i class="material-icons">call_end</i>
+                                    <span>Atendimento</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li class="treeview {!! (Request::is('negocios')) ? 'active' : '' !!}">
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">business_center</i>
+                                <span>Negócios</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li><a href="{{url('negocios/create')}}">Adicionar</a></li>
+                                <li><a href="{{url('negocios')}}">Lista</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>    
+            </ul>
+        </div>
+        <div class="legal">
+            <div class="copyright" style="text-align: center;">
+                &copy; 2018 <a target="_blank" href="#">MedSafer</a> <br>
+                <span style="font-size:11px;"> Desenvolvidor por: <a href="https://www.inhalt.com.br" target="_blank">Inhalt Soluções</a> </span>
+            </div>
+        </div>
+    </aside>

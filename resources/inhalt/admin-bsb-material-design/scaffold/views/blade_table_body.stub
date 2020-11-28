@@ -1,0 +1,24 @@
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover dataTable" id="$MODEL_NAME_PLURAL_CAMEL$-table">
+        <thead>
+            <tr>
+                <th style="width: 5%;">
+                    <input id="select_all" class="checkbox filled-in chk-col-light-blue" type="checkbox">
+                    <label for="select_all" style="margin-bottom: -10px;"></label>    
+                </th>
+                $FIELD_HEADERS$
+            </tr>
+        </thead>
+        <tbody>
+        @foreach($$MODEL_NAME_PLURAL_CAMEL$ as $$MODEL_NAME_CAMEL$)
+            <tr>
+                <td>
+                    <input id="item_{!! $$MODEL_NAME_CAMEL$->$PRIMARY_KEY_NAME$ !!}" class="checkbox filled-in chk-col-light-blue" type="checkbox" value="{!! $$MODEL_NAME_CAMEL$->$PRIMARY_KEY_NAME$ !!}" name="check[]">
+                    <label for="item_{!! $$MODEL_NAME_CAMEL$->$PRIMARY_KEY_NAME$ !!}" style="margin-left: 10px;"></label>
+                </td>
+                $FIELD_BODY$
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
+</div>

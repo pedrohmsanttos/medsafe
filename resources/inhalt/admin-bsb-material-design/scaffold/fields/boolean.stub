@@ -1,0 +1,11 @@
+<!-- 'Boolean FIELD_NAME_TITLE$ Field' checked by default -->
+<div class="col-md-6">
+    <div class="form-group">
+        {!! Form::label('$FIELD_NAME$', '$FIELD_NAME_TITLE$:') !!}
+        <div class="form-line {{$errors->has('$FIELD_NAME$') ? 'focused error' : '' }}">
+            {!! Form::checkbox('$FIELD_NAME$', 1, true) !!}
+        </div>
+        <label class="error">{{$errors->first('$FIELD_NAME$')}}</label>
+    </div>
+</div>
+<!-- ./'Boolean FIELD_NAME_TITLE$ Field' checked by default -->

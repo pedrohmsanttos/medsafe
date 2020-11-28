@@ -1,0 +1,269 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Cadastro de Corretor</title>
+	<link rel="stylesheet" type="text/css" href="view.css" media="all">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript" src="view.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+</head>
+
+<body id="main_body">
+	<img id="top" src="top.png" alt="">
+	<div id="form_container">
+		<h1><a>Cadastro de Corretor</a></h1>
+		<form id="corretor_cadastro" class="appnitro" method="post" action="">
+			<div class="form_description">
+				<h2>Dados do responsável</h2>
+			</div>
+
+			<ul>
+				<div class="row">
+					<li id="li_1" class="col-md-6">
+						<label class="description" for="nome">Nome </label>
+						<div>
+							<input id="nome" name="nome" class="element text large" type="text" maxlength="255"
+								value="" />
+						</div>
+					</li>
+
+					<li id="li_2" class="col-md-6">
+						<label class="description" for="email">Email </label>
+						<div>
+							<input id="email" name="email" class="element text large" type="text" maxlength="255"
+								value="" />
+						</div>
+					</li>
+				</div>
+
+				<div class="row">
+					<li id="li_4" class="col-md-6">
+						<label class="description" for="cpf">CPF </label>
+						<div>
+							<input id="cpf" name="cpf" class="element text medium" type="text" maxlength="255"
+								value="" />
+						</div>
+					</li>
+
+					<li id="li_3" class="col-md-6">
+						<label class="description" for="telefone">Telefone </label>
+						<div>
+							<input id="telefone" name="telefone" class="element text medium" type="text" maxlength="255"
+								value="" />
+						</div>
+					</li>
+				</div>
+
+				<div class="row">
+					<li id="li_5" class="col-md-6">
+						<label class="description" for="celular">Celular </label>
+						<div>
+							<input id="celular" name="celular" class="element text medium" type="text" maxlength="255"
+								value="" />
+						</div>
+					</li>
+				</div>
+
+				<div class="form_description">
+					<h2>Dados da corretora</h2>
+				</div>
+
+				<div class="row">
+					<li id="li_12" class="col-md-6">
+						<label class="description" for="descricao">Razão Social </label>
+						<div>
+							<input id="descricao" name="descricao" class="element text large" type="text" maxlength="255"
+								value="" />
+						</div>
+					</li>
+
+					<li id="li_22" class="col-md-6">
+						<label class="description" for="susep">Registro SUSEP </label>
+						<div>
+							<input id="susep" name="susep" class="element text large" type="text" maxlength="255"
+								value="" />
+						</div>
+					</li>
+				</div>
+
+				<div class="row">
+					<li id="li_32" class="col-md-6">
+						<label class="description" for="cnpj">CNPJ </label>
+						<div>
+							<input id="cnpj" name="cnpj" class="element text large" type="text" maxlength="255"
+								value="" />
+						</div>
+					</li>
+
+					<li id="li_33" class="col-md-6">
+						<label class="description" for="inscricao_municipal">Inscrição municipal </label>
+						<div>
+							<input id="inscricao_municipal" name="inscricao_municipal" class="element text large" type="text" maxlength="255"
+								value="" />
+						</div>
+					</li>
+				</div>
+
+				<div class="row">
+					<li id="li_25" class="col-md-6">
+						<label class="description" for="telefone_2">Telefone </label>
+						<div>
+							<input id="telefone_2" name="telefone_2" class="element text medium" type="text" maxlength="255"
+								value="" />
+						</div>
+					</li>
+				</div>
+
+				<div class="form_description">
+					<h2>Endereço comercial</h2>
+				</div>
+
+				<div class="row">
+					<li id="li_54" class="col-md-6">
+						<label class="description" for="cep">CEP </label>
+						<div>
+							<input id="cep" name="cep" class="element text medium" type="text" maxlength="255"
+								value="" />
+						</div>
+					</li>
+
+					<li id="li_35" class="col-md-6">
+						<label class="description" for="uf">UF </label>
+						<div>
+							<input id="uf" name="uf" class="element text medium" type="text" maxlength="255"
+								value="" />
+						</div>
+					</li>
+				</div>
+
+				<div class="row">
+					<li id="li_24" class="col-md-6">
+						<label class="description" for="cidade">Cidade </label>
+						<div>
+							<input id="cidade" name="municipio" class="element text large" type="text" maxlength="255"
+								value="" />
+						</div>
+					</li>
+
+					<li id="li_325" class="col-md-6">
+						<label class="description" for="bairro">Bairro </label>
+						<div>
+							<input id="bairro" name="bairro" class="element text medium" type="text" maxlength="255"
+								value="" />
+						</div>
+					</li>
+				</div>
+
+				<div class="row">
+					<li id="li_2224" class="col-md-4">
+						<label class="description" for="rua">Rua </label>
+						<div>
+							<input id="rua" name="rua" class="element text medium" type="text" maxlength="255"
+								value="" />
+						</div>
+					</li>
+							
+					<li id="li_224" class="col-md-4">
+						<label class="description" for="numero">Número </label>
+						<div>
+							<input id="numero" name="numero" class="element text medium" type="text" maxlength="255"
+								value="" />
+						</div>
+					</li>
+
+					<li id="li_244" class="col-md-4">
+						<label class="description" for="complemento">Complemento </label>
+						<div>
+							<input id="complemento" name="complemento" class="element text medium" type="text" maxlength="255"
+								value="" />
+						</div>
+					</li>
+				</div>
+
+				<div class="form_description">
+						<h2>Endereço fiscal</h2>
+					</div>
+
+					<label class="description" for="mesmo_endereco"><input type="checkbox" id="mesmo_endereco" name="mesmo_endereco" > Usar o mesmo endereço comercial</label>
+	
+					<div class="row">
+						<li id="li_54f" class="col-md-6">
+							<label class="description" for="cep_f">CEP </label>
+							<div>
+								<input id="cep_f" name="cep_f" class="element text medium" type="text" maxlength="255"
+									value="" />
+							</div>
+						</li>
+	
+						<li id="li_35f" class="col-md-6">
+							<label class="description" for="uf_f">UF </label>
+							<div>
+								<input id="uf_f" name="uf_f" class="element text medium" type="text" maxlength="255"
+									value="" />
+							</div>
+						</li>
+					</div>
+	
+					<div class="row">
+						<li id="li_24f" class="col-md-6">
+							<label class="description" for="cidade_f">Cidade </label>
+							<div>
+								<input id="cidade_f" name="cidade_f" class="element text large" type="text" maxlength="255"
+									value="" />
+							</div>
+						</li>
+	
+						<li id="li_325f" class="col-md-6">
+							<label class="description" for="bairro_f">Bairro </label>
+							<div>
+								<input id="bairro_f" name="bairro_f" class="element text medium" type="text" maxlength="255"
+									value="" />
+							</div>
+						</li>
+					</div>
+	
+					<div class="row">
+						<li id="li_234" class="col-md-4">
+							<label class="description" for="rua_f">Rua </label>
+							<div>
+								<input id="rua_f" name="rua_f" class="element text medium" type="text" maxlength="255"
+									value="" />
+							</div>
+						</li>
+
+						<li id="li_224f" class="col-md-4">
+							<label class="description" for="numero_f">Número </label>
+							<div>
+								<input id="numero_f" name="numero_f" class="element text medium" type="text" maxlength="255"
+									value="" />
+							</div>
+						</li>
+	
+						<li id="li_244f" class="col-md-4">
+							<label class="description" for="complemento_f">Complemento </label>
+							<div>
+								<input id="complemento_f" name="complemento_f" class="element text medium" type="text" maxlength="255"
+									value="" />
+							</div>
+						</li>
+					</div>
+
+				<li class="buttons">
+					<input id="saveForm" class="button_text" type="submit" name="submit" value="Cadastrar-se" />
+				</li>
+			</ul>
+		</form>
+		<div id="footer">
+			Inhalt
+		</div>
+	</div>
+	<img id="bottom" src="bottom.png" alt="">
+</body>
+
+</html>

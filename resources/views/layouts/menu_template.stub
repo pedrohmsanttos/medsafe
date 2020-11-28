@@ -1,0 +1,3 @@
+<li class="treeview {{ Request::is('$MODEL_NAME_PLURAL_CAMEL$*') ? 'active' : '' }}">
+    <a href="{!! route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index') !!}"><i class="material-icons">person</i><span>$MODEL_NAME_PLURAL_HUMAN$</span></a>
+</li>

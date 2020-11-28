@@ -1,0 +1,116 @@
+[
+    {
+        "name": "id",
+        "dbType": "integer,true,true",
+        "htmlType": null,
+        "validations": "required",
+        "searchable": false,
+        "fillable": false,
+        "primary": true,
+        "inForm": false,
+        "inIndex": false
+    },
+    {
+        "name": "arquivo",
+        "dbType": "string",
+        "htmlType": "text",
+        "validations": null,
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true
+    },
+    {
+        "name": "material_id",
+        "dbType": "integer,false,true",
+        "htmlType": null,
+        "validations": null,
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true
+    },
+    {
+        "name": "deleted_at",
+        "dbType": "datetime",
+        "htmlType": "date",
+        "validations": null,
+        "searchable": false,
+        "fillable": false,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false
+    },
+    {
+        "name": "created_at",
+        "dbType": "datetime",
+        "htmlType": "date",
+        "validations": null,
+        "searchable": false,
+        "fillable": false,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false
+    },
+    {
+        "name": "updated_at",
+        "dbType": "datetime",
+        "htmlType": "date",
+        "validations": null,
+        "searchable": false,
+        "fillable": false,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false
+    },
+    {
+        "type": "relation",
+        "relation": "mt1,Materiai,material_id"
+    },
+    {
+        "type": "relation",
+        "relation": "mtm,,clientes"
+    },
+    {
+        "type": "relation",
+        "relation": "mtm,,comissoes"
+    },
+    {
+        "type": "relation",
+        "relation": "mtm,,comments"
+    },
+    {
+        "type": "relation",
+        "relation": "mtm,,corretores"
+    },
+    {
+        "type": "relation",
+        "relation": "mtm,,ganho_negocios"
+    },
+    {
+        "type": "relation",
+        "relation": "mtm,,lancamentos_pagar"
+    },
+    {
+        "type": "relation",
+        "relation": "mtm,,negocio_produtos"
+    },
+    {
+        "type": "relation",
+        "relation": "mtm,,organizacao_enderecos"
+    },
+    {
+        "type": "relation",
+        "relation": "mtm,,permission_role"
+    },
+    {
+        "type": "relation",
+        "relation": "mtm,,pessoa_enderecos"
+    },
+    {
+        "type": "relation",
+        "relation": "mtm,,role_user"
+    }
+]

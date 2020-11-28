@@ -1,0 +1,56 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: app.dockerfile
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    environment:
+      DB_PORT: 3306
+      DB_HOST: database
+
+  redis:
+    image: redis:4.0.10
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis-data:/data
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - 6379:6379
+
+  web:
+    build:
+      context: ./
+      dockerfile: web.dockerfile
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    ports:
+      - 6060:80
+
+  database:
+    image: mysql:5.7
+    volumes:
+      - dbdata:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: homestead
+    ports:
+      - 33061:3306
+  # node:
+  #   image: node
+  #   volumes:
+  #       - ./docker-assets/node/scripts:/scripts
+  #       - ./node:/
+  #   links:
+  #       - mysql
+  #   working_dir: /
+  #   entrypoint: /node_scripts.sh
+
+
+volumes:
+  dbdata:
+  redis-data:
